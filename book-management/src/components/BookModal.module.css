@@ -1,0 +1,81 @@
+.overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+  z-index: 1000; display: flex; align-items: center; justify-content: center;
+  padding: 1rem; animation: fadeIn 0.2s ease;
+}
+.modal {
+  background: var(--bg-secondary); border: 1px solid var(--border-hover);
+  border-radius: var(--radius-xl); width: 100%; max-width: 540px;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-modal); animation: scaleIn 0.2s ease;
+}
+.header { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 1.6rem 0; }
+.title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--text-primary); }
+.closeBtn {
+  width: 30px; height: 30px; border-radius: var(--radius-sm);
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition);
+}
+.closeBtn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+.form { padding: 1.1rem 1.6rem 1.6rem; display: flex; flex-direction: column; gap: 14px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); }
+.req { color: var(--danger); }
+.opt { font-weight: 400; color: var(--text-muted); }
+.field input, .field select, .field textarea {
+  padding: 9px 12px; background: var(--bg-input);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  color: var(--text-primary); font-family: var(--font-body); font-size: 0.88rem;
+  outline: none; resize: none; transition: border-color var(--transition);
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--text-muted); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent-border); }
+.err input, .err select { border-color: var(--danger); }
+.errMsg { font-size: 0.73rem; color: var(--danger); }
+
+/* Status selector */
+.statusRow { display: flex; gap: 6px; flex-wrap: wrap; }
+.statusOpt {
+  padding: 5px 13px; border: 1px solid var(--border); border-radius: 100px;
+  background: transparent; color: var(--text-secondary);
+  font-family: var(--font-body); font-size: 0.78rem;
+  cursor: pointer; transition: all var(--transition);
+}
+.statusOpt:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.statusOptActive { background: var(--accent-dim) !important; border-color: var(--accent-border) !important; color: var(--accent) !important; }
+
+/* Rating */
+.ratingRow { display: flex; align-items: center; gap: 2px; }
+.star { background: none; border: none; padding: 2px; cursor: pointer; border-radius: 3px; transition: transform var(--transition); display: flex; }
+.star:hover { transform: scale(1.2); }
+.ratingText { font-size: 0.78rem; color: var(--text-muted); margin-left: 8px; }
+
+/* Footer */
+.footer { display: flex; gap: 8px; justify-content: flex-end; padding-top: 4px; }
+.cancel {
+  padding: 0 18px; height: 40px; background: transparent;
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  color: var(--text-secondary); font-family: var(--font-body); font-size: 0.85rem;
+  cursor: pointer; transition: all var(--transition);
+}
+.cancel:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.submit {
+  padding: 0 22px; height: 40px; background: var(--accent); border: none;
+  border-radius: var(--radius-md); color: #1a1000;
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+  cursor: pointer; transition: all var(--transition);
+  display: flex; align-items: center; gap: 7px;
+}
+.submit:hover:not(:disabled) { background: #e0b55e; }
+.submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.spinner { width: 13px; height: 13px; border: 2px solid rgba(0,0,0,0.2); border-top-color: rgba(0,0,0,0.8); border-radius: 50%; animation: spin 0.7s linear infinite; }
+
+@media (max-width: 480px) {
+  .row { grid-template-columns: 1fr; }
+  .form { padding: 1rem 1.2rem 1.4rem; }
+  .header { padding: 1.2rem 1.2rem 0; }
+}
